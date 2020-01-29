@@ -6,7 +6,13 @@
 	<groupId>com.epam.edu</groupId>
 	<artifactId>spring-core-template</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>5.2.1.RELEASE</version>
+		</dependency>
+	</dependencies>
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>

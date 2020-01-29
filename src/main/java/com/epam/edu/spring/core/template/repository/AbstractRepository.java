@@ -5,6 +5,7 @@ import java.util.List;
 /**
  * Абстрактный класс для хранения сущностей.
  * ID сущности генерируется, исходя из initialSequence
+ *
  * @param <T>
  */
 public abstract class AbstractRepository<T> {
