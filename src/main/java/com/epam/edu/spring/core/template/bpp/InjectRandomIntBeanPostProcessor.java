@@ -2,11 +2,13 @@ package com.epam.edu.spring.core.template.bpp;
 
 import com.epam.edu.spring.core.template.annotation.InjectRandomInt;
 import org.springframework.beans.factory.config.BeanPostProcessor;
+import org.springframework.stereotype.Component;
 import org.springframework.util.ReflectionUtils;
 
 import java.lang.reflect.Field;
 import java.util.Random;
 
+@Component
 public class InjectRandomIntBeanPostProcessor implements BeanPostProcessor {
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) {

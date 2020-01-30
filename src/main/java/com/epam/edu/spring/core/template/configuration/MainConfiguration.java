@@ -8,12 +8,8 @@ import org.springframework.context.annotation.*;
 import javax.annotation.Resource;
 
 @Configuration
-@Import(InitializerConfiguration.class)
+@Import({InitializerConfiguration.class, InjectRandomIntBeanPostProcessor.class})
 public class MainConfiguration {
-    @Bean
-    public InjectRandomIntBeanPostProcessor injectRandomIntBeanPostProcessor() {
-        return new InjectRandomIntBeanPostProcessor();
-    }
 
     @Resource
     @Bean
