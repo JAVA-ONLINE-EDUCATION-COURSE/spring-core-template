@@ -1,5 +1,7 @@
 package com.epam.edu.spring.core.template.entity;
 
+import java.util.Objects;
+
 public class Item {
 
     private long id;
@@ -44,5 +46,21 @@ public class Item {
 
     public void setColor(Color color) {
         this.color = color;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Item item = (Item) o;
+        return id == item.id &&
+                Double.compare(item.price, price) == 0 &&
+                Objects.equals(name, item.name) &&
+                color == item.color;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, price, color);
     }
 }
