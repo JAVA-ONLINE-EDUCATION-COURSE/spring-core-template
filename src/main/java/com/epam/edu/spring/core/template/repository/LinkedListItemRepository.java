@@ -16,7 +16,6 @@ import java.util.Random;
 public class LinkedListItemRepository extends AbstractRepository<Item> implements ItemRepository {
 
     private final LinkedList<Item> listItem;
-    private ListIterator<Item> iterator;
 
     public LinkedListItemRepository(LinkedList<Item> listItem) {
         this.listItem = listItem;
@@ -47,7 +46,11 @@ public class LinkedListItemRepository extends AbstractRepository<Item> implement
         this.initialSequence = new Random().nextInt(1) + 100;
     }
 
+    long getInitialSequence() {
+        return this.initialSequence;
+    }
+
     void setHolder() {
-        this.iterator = listItem.listIterator();
+        this.holder = new LinkedList<>();
     }
 }

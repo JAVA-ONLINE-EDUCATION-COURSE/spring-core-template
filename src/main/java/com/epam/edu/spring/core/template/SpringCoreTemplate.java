@@ -11,9 +11,7 @@ public class SpringCoreTemplate {
 		AnnotationConfigApplicationContext context
 				= new AnnotationConfigApplicationContext(MainConfiguration.class);
 
-		MainConfiguration configuration = context.getBean(MainConfiguration.class);
-		ItemRepository repository = configuration.repository();
-		System.out.println(repository);
+		System.out.println(context);
 
 	}
 

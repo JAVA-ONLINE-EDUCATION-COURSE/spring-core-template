@@ -16,6 +16,7 @@ public class RepositoryConfiguration {
     @Bean
     @Scope("singleton")
     public ItemRepository arrayListItemRepository() {
+        
         return new ArrayListItemRepository(new ArrayList<>());
     }
 

@@ -13,16 +13,16 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsInstanceOf.instanceOf;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@TestPropertySource("classpath:applicationArray.properties")
+@TestPropertySource("classpath:applicationEmpty.properties")
 @ContextConfiguration(classes = MainConfiguration.class)
-public class MainConfigurationArrayTest {
+public class MainConfigurationPropertyEmptyTest {
 
     @Autowired
     private MainConfiguration mainConfiguration;
 
     @Test
     public void testPropertyMainConfiguration() {
-        Assert.assertEquals(mainConfiguration.implementation, "array");
+        Assert.assertEquals(mainConfiguration.implementation, "");
     }
 
     @Test

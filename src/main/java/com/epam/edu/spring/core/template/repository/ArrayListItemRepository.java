@@ -3,13 +3,11 @@ package com.epam.edu.spring.core.template.repository;
 import com.epam.edu.spring.core.template.entity.Item;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.ListIterator;
+
 
 /**
  * Репозиторий, основанный на классе ArrayList.
@@ -19,8 +17,6 @@ import java.util.ListIterator;
 public class ArrayListItemRepository extends AbstractRepository<Item> implements ItemRepository {
 
     private final ArrayList<Item> listItem;
-
-    private ListIterator<Item> listIterator;
 
     @Autowired
     public ArrayListItemRepository(ArrayList<Item> listItem) {
@@ -48,11 +44,15 @@ public class ArrayListItemRepository extends AbstractRepository<Item> implements
         return true;
     }
 
-    void setInitialSequence(@Value("${initial.sequence}") int val) {
+    void setInitialSequence(int val) {
         this.initialSequence = val;
     }
 
+    long getInitialSequence() {
+        return this.initialSequence;
+    }
+
     void setHolder() {
-        this.listIterator = listItem.listIterator();
+        this.holder = new ArrayList<>();
     }
 }
