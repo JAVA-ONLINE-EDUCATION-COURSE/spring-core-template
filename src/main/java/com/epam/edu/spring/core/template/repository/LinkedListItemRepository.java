@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.LinkedList;
+import java.util.ListIterator;
 import java.util.Random;
 
 /**
@@ -14,7 +15,12 @@ import java.util.Random;
 @Component
 public class LinkedListItemRepository extends AbstractRepository<Item> implements ItemRepository {
 
-    private LinkedList<Item> listItem = new LinkedList<>();
+    private final LinkedList<Item> listItem;
+    private ListIterator<Item> iterator;
+
+    public LinkedListItemRepository(LinkedList<Item> listItem) {
+        this.listItem = listItem;
+    }
 
     @Override
     public Item getById(long id) {
@@ -42,14 +48,6 @@ public class LinkedListItemRepository extends AbstractRepository<Item> implement
     }
 
     void setHolder() {
-        //TODO
-    }
-
-    public LinkedList<Item> getListItem() {
-        return listItem;
-    }
-
-    public void setListItem(LinkedList<Item> listItem) {
-        this.listItem = listItem;
+        this.iterator = listItem.listIterator();
     }
 }

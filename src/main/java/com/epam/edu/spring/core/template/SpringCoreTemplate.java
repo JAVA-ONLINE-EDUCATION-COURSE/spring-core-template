@@ -3,7 +3,6 @@ package com.epam.edu.spring.core.template;
 import com.epam.edu.spring.core.template.configuration.MainConfiguration;
 import com.epam.edu.spring.core.template.repository.ItemRepository;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import java.util.Arrays;
 
 public class SpringCoreTemplate {
 
@@ -15,7 +14,6 @@ public class SpringCoreTemplate {
 		MainConfiguration configuration = context.getBean(MainConfiguration.class);
 		ItemRepository repository = configuration.repository();
 		System.out.println(repository);
-
 
 	}
 

@@ -1,5 +1,6 @@
 package com.epam.edu.spring.core.template.configuration;
 
+import com.epam.edu.spring.core.template.entity.Color;
 import com.epam.edu.spring.core.template.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,9 +18,11 @@ public class MainConfiguration {
 
     @Autowired
     private RepositoryConfiguration repositoryConfiguration;
+
+    @Autowired
     private InitializerConfiguration initializerConfiguration;
 
-    @Bean("repository")
+    @Bean
     public ItemRepository repository() {
         if (implementation.equals("array")) {
             return  repositoryConfiguration.arrayListItemRepository();
@@ -28,5 +31,10 @@ public class MainConfiguration {
         } else {
             return repositoryConfiguration.arrayListItemRepository();
         }
+    }
+
+    @Bean
+    public Color getColor() throws Exception {
+        return initializerConfiguration.getColor();
     }
 }
