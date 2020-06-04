@@ -1,28 +1,56 @@
 package com.epam.edu.spring.core.template.repository;
 
 import com.epam.edu.spring.core.template.entity.Item;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.util.LinkedList;
+import java.util.ListIterator;
+import java.util.Random;
 
 /**
  * Репозиторий, основанный на классе LinkedList.
  * initialSequence должен случайно генерироваться из диапазона от 1 до 100
  */
+@Component
 public class LinkedListItemRepository extends AbstractRepository<Item> implements ItemRepository {
+
+    private final LinkedList<Item> listItem;
+
+    public LinkedListItemRepository(LinkedList<Item> listItem) {
+        this.listItem = listItem;
+    }
 
     @Override
     public Item getById(long id) {
+        for (Item item : listItem) {
+            if (item.getId() == id) {
+                return item;
+            }
+        }
         return null;
     }
 
     @Override
     public boolean createItem(Item item) {
-        return false;
+        for (Item itemInList : listItem) {
+            if (itemInList.equals(item)) {
+                return false;
+            }
+        }
+        listItem.add(item);
+        return true;
     }
 
     void setInitialSequence(int val) {
-        //TODO
+        this.initialSequence = new Random().nextInt(1) + 100;
+    }
+
+    long getInitialSequence() {
+        return this.initialSequence;
     }
 
     void setHolder() {
-        //TODO
+        this.holder = new LinkedList<>();
     }
 }
