@@ -6,6 +6,7 @@ public class SimpleItemValidator implements ItemValidator {
 
     @Override
     public boolean isItemValid(Item item) {
-        return false;
+        return true;
     }
+
 }
