@@ -1,8 +1,7 @@
 package com.epam.edu.spring.core.template.repository;
 
 import com.epam.edu.spring.core.template.entity.Item;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.util.ArrayList;
 
@@ -10,12 +9,12 @@ import java.util.ArrayList;
  * Репозиторий, основанный на классе ArrayList.
  * initialSequence должен браться из application.properties
  */
-@Component
 public class ArrayListItemRepository extends AbstractRepository<Item> implements ItemRepository {
 
    // private final ArrayList<Item> listItem;
+   @Value("${initial.sequence}")
+   public long initialSequence;
 
-    @Autowired
     public ArrayListItemRepository(ArrayList<Item> listItem) {
         this.holder = listItem;
     }
@@ -33,7 +32,7 @@ public class ArrayListItemRepository extends AbstractRepository<Item> implements
     @Override
     public boolean createItem(Item item) {
         for (Item itemInList : holder) {
-            if (itemInList.equals(item)) {
+            if (itemInList.getId() == item.getId()) {
                 return false;
             }
         }
@@ -44,9 +43,7 @@ public class ArrayListItemRepository extends AbstractRepository<Item> implements
     void setInitialSequence(int val) {
         this.initialSequence=val;
     }
-    long getInitialSequence() {
-        return this.initialSequence;
-    }
+
 
     void setHolder() {
         this.holder = new ArrayList<>();

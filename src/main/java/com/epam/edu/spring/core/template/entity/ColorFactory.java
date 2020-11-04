@@ -1,23 +1,28 @@
 package com.epam.edu.spring.core.template.entity;
 
 import org.springframework.beans.factory.FactoryBean;
-import org.springframework.stereotype.Component;
+import java.util.Random;
 
-@Component
+
 public class ColorFactory implements FactoryBean<Color> {
 
     @Override
     public Color getObject() throws Exception {
-        return null;
+        return Color.values()[new Random().nextInt(Color.values().length)];
     }
 
     @Override
     public Class<?> getObjectType() {
-        return null;
+        return ColorFactory.class;
     }
 
     @Override
     public boolean isSingleton() {
         return false;
     }
+
+    public Color getColor(){
+        return Color.values()[new Random().nextInt(Color.values().length)];
+    }
+
 }

@@ -10,15 +10,15 @@ import java.util.Random;
  * initialSequence должен случайно генерироваться из диапазона от 1 до 100
  */
 public class LinkedListItemRepository extends AbstractRepository<Item> implements ItemRepository {
-    private final LinkedList<Item> listItem;
+   long initialSequence = new Random().nextInt(100);
 
     public LinkedListItemRepository(LinkedList<Item> listItem) {
-        this.listItem = listItem;
+        this.holder = listItem;
     }
 
     @Override
     public Item getById(long id) {
-        for (Item item : listItem) {
+        for (Item item : holder) {
             if (item.getId() == id) {
                 return item;
             }
@@ -28,19 +28,22 @@ public class LinkedListItemRepository extends AbstractRepository<Item> implement
 
     @Override
     public boolean createItem(Item item) {
-        for (Item itemInList : listItem) {
-            if (itemInList.equals(item)) {
+        for (Item itemInList : holder) {
+            if (itemInList.getId() == item.getId()) {
                 return false;
             }
         }
-        listItem.add(item);
+        holder.add(item);
         return true;
     }
-    long getInitialSequence() {
-        return this.initialSequence;
-    }
+
     void setInitialSequence(int val) {
-        this.initialSequence=new Random().nextInt(1) + 100;
+        this.initialSequence = val;
+    }
+
+    @Override
+    public long getInitialSequence() {
+        return initialSequence;
     }
 
     void setHolder() {
