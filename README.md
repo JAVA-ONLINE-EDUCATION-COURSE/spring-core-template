@@ -10,12 +10,12 @@
 1. В классе `MainConfiguration` сделайте импорт двух других классов-конфигураций:
     * В классе `RepositoryConfiguration` сделайте описание бинов `ArrayListItemRepository` и `LinkedListItemRepository`
         1. В `ArrayListItemRepository` объекты `Item` должны храниться в `ArrayList` и `initialSequence` считываться из пропертей.
-        1. В `ArrayListItemRepository` объекты `Item` должны храниться в `LinkedList` и `initialSequence` генерироваться случайно.
+        1. В `LinkedListItemRepository` объекты `Item` должны храниться в `LinkedList` и `initialSequence` генерироваться случайно.
     * В классе `InitializerConfiguration` реализуйте factory-bean `ColorFactory`, который умеет выдавать сущности
      бинов `Color` по запросу `getColor`. Бин `Color` обязан создаваться каждый раз заново.
 
 1. Имплементируйте `SimpleItemService` - сделайте так, чтобы необходимые зависимости добавлялись к нему через метод `set..`
-и конструктор. В чём разница этих подходов?
+и конструктор. Используйте внедрение зависимостей которые предоставляет Spring. В чём разница этих подходов?
 
 1. Сделайте так, чтобы бин `ColorFactory` создавался не на этапе создания контекста, а при первом обращении к нему.
     
