@@ -9,9 +9,9 @@ import java.util.List;
  */
 public abstract class AbstractRepository<T> {
 
-    protected long initialSequence = 0;
+    public long initialSequence = 0;
 
-    protected List<T> holder;
+    public List<T> holder;
 
     abstract void setInitialSequence(int val);
 

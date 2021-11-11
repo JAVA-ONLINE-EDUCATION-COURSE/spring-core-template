@@ -35,12 +35,12 @@ public class LinkedListItemRepository extends AbstractRepository<Item> implement
         }
     }
 
-    void setInitialSequence(int val) {
+    public void setInitialSequence(int val) {
         Random random = new Random();
         this.initialSequence = random.nextInt(100);
     }
 
-    void setHolder() {
+    public void setHolder() {
         this.holder = new LinkedList<>();
     }
 }

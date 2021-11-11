@@ -2,6 +2,7 @@ package com.epam.edu.spring.core.template.repository;
 
 import com.epam.edu.spring.core.template.entity.Item;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,11 +36,11 @@ public class ArrayListItemRepository extends AbstractRepository<Item> implements
         }
     }
 
-    void setInitialSequence(@Value("${initial.sequence}")int val) {
+    public void setInitialSequence(@Value("${initial.sequence}") int val) {
         this.initialSequence = val;
     }
 
-    void setHolder() {
+    public void setHolder() {
         this.holder = new ArrayList<>();
     }
 }
