@@ -1,26 +1,25 @@
-package com.epam.edu.spring.core.template.service;
+package com.epam.edu.spring.core.template.entity;
 
-import com.epam.edu.spring.core.template.entity.Color;
 import org.springframework.beans.factory.FactoryBean;
 
 import java.util.Random;
 
 public class ColorFactory implements FactoryBean<Color> {
+
     Random random = new Random();
 
-    public String getColor() {
-        //Color.values()[random.nextInt(Color.values().length)]
-        return "color";
+    public Color getColor() {
+        return getObject();
     }
 
     @Override
-    public Color getObject() throws Exception {
-        return null;
+    public Color getObject() {
+        return Color.values()[random.nextInt(Color.values().length)];
     }
 
     @Override
     public Class<?> getObjectType() {
-        return null;
+        return Color.class;
     }
 
     @Override
