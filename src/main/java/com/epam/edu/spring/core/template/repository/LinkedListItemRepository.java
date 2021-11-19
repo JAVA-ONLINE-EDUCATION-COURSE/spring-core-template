@@ -2,6 +2,8 @@ package com.epam.edu.spring.core.template.repository;
 
 import com.epam.edu.spring.core.template.entity.Item;
 
+import java.util.LinkedList;
+
 /**
  * Репозиторий, основанный на классе LinkedList.
  * initialSequence должен случайно генерироваться из диапазона от 1 до 100
@@ -19,10 +21,15 @@ public class LinkedListItemRepository extends AbstractRepository<Item> implement
     }
 
     void setInitialSequence(int val) {
-        //TODO
+        initialSequence = val;
     }
 
     void setHolder() {
-        //TODO
+        holder = new LinkedList<>();
+    }
+
+    public LinkedListItemRepository(int initialSequence) {
+        setHolder();
+        setInitialSequence(initialSequence);
     }
 }

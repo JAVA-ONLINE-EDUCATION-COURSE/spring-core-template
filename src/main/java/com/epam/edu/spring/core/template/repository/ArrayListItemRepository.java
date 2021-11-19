@@ -2,6 +2,8 @@ package com.epam.edu.spring.core.template.repository;
 
 import com.epam.edu.spring.core.template.entity.Item;
 
+import java.util.ArrayList;
+
 /**
  * Репозиторий, основанный на классе ArrayList.
  * initialSequence должен браться из application.properties
@@ -19,10 +21,15 @@ public class ArrayListItemRepository extends AbstractRepository<Item> implements
     }
 
     void setInitialSequence(int val) {
-        //TODO
+        initialSequence = val;
     }
 
     void setHolder() {
-        //TODO
+        holder = new ArrayList<>();
+    }
+
+    public ArrayListItemRepository(int initialSequence) {
+        setHolder();
+        setInitialSequence(initialSequence);
     }
 }
