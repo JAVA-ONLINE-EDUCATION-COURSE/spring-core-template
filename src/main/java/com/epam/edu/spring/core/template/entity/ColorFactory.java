@@ -1,10 +1,12 @@
-package com.epam.edu.spring.core.template.service;
+package com.epam.edu.spring.core.template.entity;
 
-import com.epam.edu.spring.core.template.entity.Color;
+
 import org.springframework.beans.factory.config.AbstractFactoryBean;
+import org.springframework.stereotype.Component;
 
 import java.util.Random;
 
+@Component
 public class ColorFactory extends AbstractFactoryBean<Color> {
 
     public ColorFactory() {
@@ -17,11 +19,11 @@ public class ColorFactory extends AbstractFactoryBean<Color> {
     }
 
     @Override
-    protected Color createInstance() throws Exception {
+    protected Color createInstance() {
         return Color.values()[new Random().nextInt(Color.values().length)];
     }
 
-    public Color getColor() throws Exception {
-        return getObject();
+    public Color getColor() {
+        return createInstance();
     }
 }

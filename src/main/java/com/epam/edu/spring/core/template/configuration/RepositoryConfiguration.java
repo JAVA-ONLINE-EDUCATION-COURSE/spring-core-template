@@ -13,9 +13,7 @@ import java.util.Random;
 @Configuration
 @PropertySource("classpath:application.properties")
 public class RepositoryConfiguration {
-
-
-    @Value("${initial.sequence != null? Integer.parseInt(initial.sequence) : 0}")
+    @Value("${initial.sequence}")
     private Integer initialSequence;
 
     private final Random random = new Random();
@@ -23,9 +21,10 @@ public class RepositoryConfiguration {
     @Value("${item.repository.implementation}")
     private String repositoryImplementation;
 
+
     @Bean
     ArrayListItemRepository arrayListItemRepository() {
-        return  new ArrayListItemRepository(initialSequence);
+        return  new ArrayListItemRepository(getSequence());
     }
 
     @Bean
@@ -34,13 +33,17 @@ public class RepositoryConfiguration {
     }
 
     @Bean
-    ItemRepository itemRepository() {
+    public ItemRepository itemRepository() {
         if (repositoryImplementation.equals("array")) {
             return arrayListItemRepository();
         }
         else if(repositoryImplementation.equals("linked")) {
             return linkedListItemRepository();
         }
-        return null;
+        return arrayListItemRepository();
+    }
+
+    private Integer getSequence() {
+        return initialSequence != null ? initialSequence : 0;
     }
 }
