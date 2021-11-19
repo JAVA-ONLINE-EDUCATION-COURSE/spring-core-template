@@ -12,12 +12,15 @@ public class ArrayListItemRepository extends AbstractRepository<Item> implements
 
     @Override
     public Item getById(long id) {
-        return null;
+        return (Item) holder.stream().filter(el -> el.getId() == (id + initialSequence));
     }
 
     @Override
     public boolean createItem(Item item) {
-        return false;
+
+        item.setId(item.getId() + initialSequence);
+        return holder.add(item);
+
     }
 
     void setInitialSequence(int val) {
