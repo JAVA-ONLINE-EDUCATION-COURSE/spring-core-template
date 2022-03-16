@@ -1,4 +1,4 @@
-package com.epam.edu.spring.core.template.service;
+package com.epam.edu.spring.core.template;
 
 import com.epam.edu.spring.core.template.entity.Item;
 
