@@ -18,4 +18,12 @@ public class SimpleItemService implements ItemService {
     public boolean createItem(Item item) {
         return false;
     }
+
+    public void setItemRepository(ItemRepository itemRepository) {
+        this.itemRepository = itemRepository;
+    }
+
+    public void setItemValidator(ItemValidator itemValidator) {
+        this.itemValidator = itemValidator;
+    }
 }
