@@ -9,14 +9,9 @@ public class SimpleItemService implements ItemService {
     private ItemRepository itemRepository;
     private ItemValidator itemValidator;
 
-    @Override
-    public Item getById(long id) {
-        return null;
-    }
-
-    @Override
-    public boolean createItem(Item item) {
-        return false;
+    public SimpleItemService(ItemRepository itemRepository, ItemValidator itemValidator) {
+        this.itemRepository = itemRepository;
+        this.itemValidator = itemValidator;
     }
 
     public void setItemRepository(ItemRepository itemRepository) {
@@ -25,5 +20,15 @@ public class SimpleItemService implements ItemService {
 
     public void setItemValidator(ItemValidator itemValidator) {
         this.itemValidator = itemValidator;
+    }
+
+    @Override
+    public Item getById(long id) {
+        return itemRepository.getById(id);
+    }
+
+    @Override
+    public boolean createItem(Item item) {
+        return itemValidator.isItemValid(item) && itemRepository.createItem(item);
     }
 }
