@@ -8,4 +8,5 @@ public interface ItemRepository {
 
     boolean createItem(Item item);
 
+    long getInitialSequence();
 }
