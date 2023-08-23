@@ -4,5 +4,5 @@ import com.epam.edu.spring.core.template.entity.Item;
 
 public interface ItemValidator {
 
-    boolean isItemValid(Item item);
+  boolean isItemValid(Item item);
 }

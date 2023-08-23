@@ -4,8 +4,7 @@ import com.epam.edu.spring.core.template.entity.Item;
 
 public interface ItemRepository {
 
-    Item getById(long id);
+  Item getById(long id);
 
-    boolean createItem(Item item);
-
+  boolean createItem(Item item);
 }
