@@ -1,14 +1,12 @@
 package com.epam.edu.spring.core.template;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import com.epam.edu.spring.core.template.configuration.MainConfiguration;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-@SpringBootApplication
 public class SpringCoreTemplate {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringCoreTemplate.class, args);
-		//TODO get service bean and do some business logic with DTO`s
-	}
-
+  public static void main(String[] args) {
+    ApplicationContext context = new AnnotationConfigApplicationContext(MainConfiguration.class);
+  }
 }
